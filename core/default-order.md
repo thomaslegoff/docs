@@ -162,3 +162,24 @@ App\Entity\Book:
 ```
 
 [/codeSelector]
+
+You can also order a collection of subresources. (Using a doctrine annotation).
+
+[codeSelector]
+
+```php
+#[ApiResource]
+class Library
+{
+    // ...
+
+     /**
+     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="Library")
+     * @OrderBy({"name" = "ASC"})
+     */
+    public $books;
+    
+    // ...
+}
+```
+[/codeSelector]
